@@ -1,4 +1,4 @@
-# ds-show
+# vue
 
 > A Vue.js project
 
