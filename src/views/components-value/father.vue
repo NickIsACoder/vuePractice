@@ -1,11 +1,12 @@
 <template>
   <div class="container">
-    <h1>动态组件及组件值交互</h1>
+    <h1>动态组件及组件值交互 {{this.$route.params.name}}</h1>
     <el-button type="default" style="margin:10px auto;">来自子组件的值：{{father_msg}}</el-button>
     <div class="tabbar">
       <p class="tab1" @click="switchTab('child1')">tab1</p>
       <p class="tab2" @click="switchTab('child2')">tab2</p>
       <p class="tab3" @click="switchTab('child3')">tab3</p>
+      <p class="tab4" @click="switchTab('Child4')">tab4</p>
     </div>
     <keep-alive>
       <component v-bind:is="which_to_show" :msg="changeTXT" @toFatherData="sendSonData"></component>
@@ -16,12 +17,14 @@
 import Child1 from "./child1.vue";
 import Child2 from "./child2.vue";
 import Child3 from "./child3.vue";
+import Child4 from "./Child4.vue";
 export default {
   name: "father",
   components: {
     Child1,
     Child2,
-    Child3
+    Child3,
+    Child4
   },
   data() {
     return {
@@ -32,6 +35,7 @@ export default {
     };
   },
   created(){
+    console.log(this.$route.params.id+'_'+this.$route.params.name)
     setTimeout(function(){
       console.log('爸爸------created')
     },100)

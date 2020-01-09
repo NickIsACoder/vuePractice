@@ -75,7 +75,12 @@
         },
         methods: {
             pageGo(_item) {
-                this.$router.push({name: `${_item}`});
+                if(_item=='father'){
+                    this.$router.push({name: `${_item}`,params: { id: 123,name:'messi' }});
+                }else{
+                    this.$router.push({name: `${_item}`});
+                }
+                
             },
         },
     }

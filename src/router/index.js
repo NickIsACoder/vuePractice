@@ -17,24 +17,33 @@ import echart from '../views/echart/echart';  // echart图表
 
 Vue.use(Router)
 
-export default new Router({
+
+const router = new Router({
   routes: [
     { path: '/',name: 'login',component: login},
     {
       path: '/index', component: index, name: 'index',  redirect: {name: 'welcome'}, 
-        children: [
-            {  path: 'welcome', component: welcome, name: 'welcome'  },
-            {  path: 'watch', component: watch, name: 'watch'  },
-            {  path: 'page2', component: page2, name: 'page2'  },
-            {  path: 'quill', component: quill, name: 'quill'  },
-            {  path: 'wangeditor', component: wangeditor, name: 'wangeditor'  },
-            {  path: 'ueditor', component: ueditor, name: 'ueditor'  },
-            {  path: 'mpoint', component: mpoint, name: 'mpoint'  },
-            {  path: 'animate', component: animate, name: 'animate'  },
-            {  path: 'vuex', component: vuex, name: 'vuex'  },
-            {  path: 'father', component: father, name: 'father'  },
-            {  path: 'echart', component: echart, name: 'echart'  },
-        ]
+      children: [
+        {  path: 'welcome', component: welcome, name: 'welcome'  },
+        {  path: 'watch', component: watch, name: 'watch'  },
+        {  path: 'page2', component: page2, name: 'page2'  },
+        {  path: 'quill', component: quill, name: 'quill'  },
+        {  path: 'wangeditor', component: wangeditor, name: 'wangeditor'  },
+        {  path: 'ueditor', component: ueditor, name: 'ueditor'  },
+        {  path: 'mpoint', component: mpoint, name: 'mpoint'  },
+        {  path: 'animate', component: animate, name: 'animate'  },
+        {  path: 'vuex', component: vuex, name: 'vuex'  },
+        {  path: 'father/:id/:name', component: father, name: 'father'  },
+        {  path: 'echart', component: echart, name: 'echart'  },
+      ]
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  // ...
+  console.log(to)
+  next()
+})
+
+export default router
